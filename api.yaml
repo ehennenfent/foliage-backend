@@ -1,0 +1,45 @@
+resource_modules:
+    - foliage_backend.models
+
+resources:
+    messages:
+        class: Message
+        attrs:
+            - id:
+                mutable: false
+            - sender
+            - content
+            - parent
+            - tree
+            - attachment
+        # Below, we declare the methods that should be enabled in the API.
+        # Methods that are not listed are not enabled. Each method can have
+        # different settings (more on that later).
+        list:
+        create:
+            required_fields:
+                - sender
+                - content
+                - parent
+            optional_fields:
+                - tree
+                - attachment
+        read:
+        update:
+        delete:
+
+    users:
+        class: User
+        attrs:
+            - id:
+                mutable: false
+            - username
+            - password
+        list:
+        create:
+            required_fields:
+                - username
+                - password
+        read:
+        update:
+        delete:
